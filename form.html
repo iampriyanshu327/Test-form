@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priyanshu's Contact Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #1a1d29;
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            background-image: radial-gradient(circle at 20% 30%, rgba(44, 62, 80, 0.15) 0%, transparent 20%), 
+                              radial-gradient(circle at 80% 70%, rgba(52, 152, 219, 0.1) 0%, transparent 20%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+        }
+
+        .logo-icon {
+            color: #3498db;
+            font-size: 2.8rem;
+        }
+
+        .logo-text {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #95a5a6;
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.5;
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .form-container {
+            flex: 1;
+            min-width: 350px;
+            max-width: 500px;
+            background-color: rgba(30, 33, 45, 0.9);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+
+        .info-panel {
+            flex: 1;
+            min-width: 350px;
+            max-width: 450px;
+            background-color: rgba(30, 33, 45, 0.9);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+
+        .form-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.8rem;
+            color: #3498db;
+            text-align: center;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .form-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            border-radius: 3px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #b0b0b0;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 16px;
+            background-color: rgba(20, 23, 33, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #e0e0e0;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        input::placeholder {
+            color: #7f8c8d;
+        }
+
+        .required::after {
+            content: '*';
+            color: #e74c3c;
+            margin-left: 4px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .info-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.8rem;
+            color: #2ecc71;
+            text-align: center;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .info-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #2ecc71, #3498db);
+            border-radius: 3px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.8rem;
+            padding-bottom: 1.8rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .info-icon {
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.2rem;
+            flex-shrink: 0;
+            font-size: 1.3rem;
+        }
+
+        .info-text h3 {
+            color: #3498db;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .info-text p {
+            color: #95a5a6;
+            line-height: 1.5;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .form-footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .success-message {
+            display: none;
+            background: rgba(46, 204, 113, 0.1);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            text-align: center;
+            color: #2ecc71;
+        }
+
+        .success-message i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .form-container, .info-panel {
+                min-width: 100%;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .logo-text {
+                font-size: 2.5rem;
+            }
+        }
+
+        .highlight {
+            color: #3498db;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-keyboard logo-icon"></i>
+                <h1 class="logo-text">Priyanshu's Test Form</h1>
+            </div>
+
+        </header>
+
+        <div class="content-wrapper">
+            <div class="form-container">
+                <h2 class="form-title">Contact Us</h2>
+                <form id="leadForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName" class="required">First Name</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName" class="required">Last Name</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="required">Email Address</label>
+                        <div class="input-wrapper">
+                            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <div class="input-wrapper">
+                            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number (optional)">
+                        </div>
+                    </div>
+                    
+                    <input type="hidden" name="source" value="Priyanshu's Website Contact Form">
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                    
+                </form>
+                
+                <div id="successMessage" class="success-message">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Thank You!</h3>
+                    <p>Your message has been sent successfully. We'll contact you soon.</p>
+                </div>
+            </div>
+            
+            <div class="info-panel">
+                <h2 class="info-title">Why Contact Us?</h2>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Quick Response</h3>
+                        <p>Our team typically responds within <span class="highlight">24 hours</span>. We pride ourselves on providing timely and helpful support for all inquiries.</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Secure & Private</h3>
+                        <p>Your information is encrypted and secure. We never share your data with third parties and adhere to strict privacy standards.</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Dedicated Support</h3>
+                        <p>Whether you have questions about features, need technical help, or want to provide feedback, our support team is ready to assist.</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Feature Requests</h3>
+                        <p>Have an idea to improve Priyanshu's? We love hearing from our community about potential new features and enhancements.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("leadForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                firstName: e.target.firstName.value,
+                lastName: e.target.lastName.value,
+                email: e.target.email.value,
+                phone: e.target.phone.value,
+                source: e.target.source.value
+            };
+            
+            // Show loading state on button
+            const submitBtn = document.querySelector('.submit-btn');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
+            // Send data to webhook
+            fetch("https://hook.eu1.make.com/gq7wsqa57dro73oin7hbas9pmkyt71ab", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Show success message
+                    document.getElementById('successMessage').style.display = 'block';
+                    document.getElementById('leadForm').reset();
+                    
+                    // Scroll to success message
+                    document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            })
+            .catch(error => {
+                alert("Sorry, there was an error submitting the form. Please try again.");
+                console.error('Error:', error);
+            })
+            .finally(() => {
+                // Reset button state
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            });
+        });
+        
+        // Add some subtle interactivity to form inputs
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
